@@ -55,7 +55,7 @@ def get_pseudo_mask(mean_conf, mean_var):
 # Loss Wrapper
 def adaptive_weighted_loss(y_true, y_pred, pseudo_mask, weights, loss_fn):
     """Apply adaptive weights for class imbalance"""
-    weights = weights / (tf.reduce_sum(weights) + 1e-7)
+    weights = weights / (tf.reduce_sum(weights) + eps)
     loss_per_pixel = loss_fn(y_true, y_pred)
     y_class = tf.cast(tf.round(y_true), tf.int32)
     mask_class0 = pseudo_mask * tf.cast(tf.equal(y_class, 0), tf.float32)
@@ -63,5 +63,6 @@ def adaptive_weighted_loss(y_true, y_pred, pseudo_mask, weights, loss_fn):
     weighted_loss_class0 = weights[0] * mask_class0 * loss_per_pixel
     weighted_loss_class1 = weights[1] * mask_class1 * loss_per_pixel
     total_loss = tf.reduce_sum(weighted_loss_class0 + weighted_loss_class1)
-    num_confident_pixels = tf.reduce_sum(pseudo_mask) + 1e-7
+    num_confident_pixels = tf.reduce_sum(pseudo_mask) + eps
+
     return total_loss / num_confident_pixels
