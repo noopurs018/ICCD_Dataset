@@ -6,4 +6,9 @@ The ICCD dataset supports applications in:
 • Semi-supervised learning with city-wise domain shifts
 This dataset provides a comprehensive, real-world benchmark to advance research in remote sensing, semi-supervised change detection, and domain adaptation.
 
+If you find this useful, please cite the research article:
+Noopur Srivastava, Kamal Jain, Surendra Kumar Sharma, Anoop Kumar Shukla, TOWARDS SCALABLE URBAN MONITORING: SEMI-SUPERVISED BUILDING CHANGE DETECTION AND THE ICCD DATASET FOR INDIAN CITIES, Results in Engineering, 2025, 108880, ISSN 2590-1230, https://doi.org/10.1016/j.rineng.2025.108880.
+
+
+
 
